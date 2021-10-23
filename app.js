@@ -130,8 +130,8 @@ function connect(){
             let dy = particlesArray[a].y - particlesArray[b].y;
             let distance = Math.sqrt(dx*dx + dy*dy);
             
-            if (distance < 20){
-                opacity = 1 - (distance/20);
+            if (distance < 15){
+                opacity = 1 - (distance/15);
                 ctx.strokeStyle = 'rgba(255,255,255,'+opacity+')';
                 ctx.lineWidth = 0.5;
                 ctx.beginPath()
