@@ -5,8 +5,8 @@ canvas.width = window.innerWidth;
 
 let particlesArray = [];
 
-let adjustX = 0;
-let adjustY = 0; 
+let adjustX = -canvas.width/1;
+let adjustY = -canvas.height/1; 
 
 let imageData;
 //const logo = document.getElementById('logo');
@@ -19,15 +19,16 @@ logo.width = canvas.width/4;
 
 logo.onload = () => {
     //ctx.translate(canvas.width/2, canvas.height/2);
-    ctx.drawImage(logo, 0 + logo.width/10, -logo.height/10, 200, 200);
-    ctx.fillStyle = 'white';
-    ctx.font = '30px Verdana';
-    ctx.textAlign = "center";
-    //ctx.fillText('Artist Brothers', 0, 0);
-
-    imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    createParticles();
+    //ctx.drawImage(logo, 0 + logo.width/10, -logo.height/10, 200, 200);
 }
+ctx.fillStyle = 'white';
+ctx.font = '30px Verdana';
+ctx.textAlign = "center";
+ctx.fillText("Artist Brothers", canvas.width/2, canvas.height/2);
+
+imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+
 
 const mouse = {
     x: null,
@@ -92,12 +93,13 @@ function createParticles(){
         particlesArray.push(new Particle(Math.random()*canvas.width, Math.random()*canvas.height))
     }
     */
-    for (let y = 0; y < imageData.height; y++){
-        for( let x = 0; x < imageData.width; x++){
-            if (imageData.data[(y*4*imageData.width) + (x*4) + 3] > 128){
-                let positionX = x;
-                let positionY = y;
-                particlesArray.push(new Particle(positionX * 5 + adjustX, positionY * 5 + adjustY));
+   for (let y = 0; y < imageData.height; y++){
+       for( let x = 0; x < imageData.width; x++){
+           if (imageData.data[(y*4*imageData.width) + (x*4) + 3] > 128){
+               let positionX = x;
+               let positionY = y;
+               console.log(x, y);
+               particlesArray.push(new Particle(positionX * 6 + adjustX * 2.5, positionY * 6 + adjustY * 2.5));
             }
         }
     }
@@ -111,7 +113,7 @@ function animation(){
         particlesArray[i].update();
     }
     //ctx.drawImage(logo, 0,0, canvas.width, canvas.height);
-   // connect();
+    connect();
     requestAnimationFrame(animation);
 }
 
@@ -141,3 +143,4 @@ function connect(){
     }
 }
 
+createParticles();
