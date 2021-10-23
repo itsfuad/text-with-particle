@@ -5,8 +5,8 @@ canvas.width = window.innerWidth;
 
 let particlesArray = [];
 
-let adjustX = 240;
-let adjustY = -180; 
+let adjustX = 0;
+let adjustY = 0; 
 
 let imageData;
 //const logo = document.getElementById('logo');
@@ -14,16 +14,16 @@ let imageData;
 const logo = new Image();
 
 logo.src = 'image.png';
-logo.width = 500;
-logo.height = 500;
-
+logo.height = canvas.height/4;
+logo.width = canvas.width/4;
 
 logo.onload = () => {
-    ctx.drawImage(logo, 0 ,0, 200, 200);
+    //ctx.translate(canvas.width/2, canvas.height/2);
+    ctx.drawImage(logo, 0 + logo.width/10, -logo.height/10, 200, 200);
     ctx.fillStyle = 'white';
     ctx.font = '30px Verdana';
-    //ctx.textAlign = "center";
-    //ctx.fillText('Artist Brothers', canvas.width/60, canvas.height/8);
+    ctx.textAlign = "center";
+    //ctx.fillText('Artist Brothers', 0, 0);
 
     imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     createParticles();
