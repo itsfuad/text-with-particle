@@ -10,4 +10,9 @@ body {
   width: 100vw;
   background: #070707;
 }
+
+body #canvas {
+  position: absolute;
+  background: #12181f;
+}
 /*# sourceMappingURL=style.css.map */

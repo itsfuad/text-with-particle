@@ -5,8 +5,8 @@ canvas.width = window.innerWidth;
 
 let particlesArray = [];
 
-let adjustX = -canvas.width/1;
-let adjustY = -canvas.height/1; 
+let adjustX = -canvas.width;
+let adjustY = -canvas.height;
 
 let imageData;
 //const logo = document.getElementById('logo');
@@ -22,12 +22,11 @@ logo.onload = () => {
     //ctx.drawImage(logo, 0 + logo.width/10, -logo.height/10, 200, 200);
 }
 ctx.fillStyle = 'white';
-ctx.font = '30px Verdana';
+ctx.font = '16px Now';
 ctx.textAlign = "center";
 ctx.fillText("Artist Brothers", canvas.width/2, canvas.height/2);
 
 imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
 
 
 const mouse = {
@@ -41,6 +40,10 @@ window.addEventListener('mousemove', (evt) => {
     mouse.y = evt.y;
     //console.log(mouse.y, mouse. y);
 });
+
+window.onresize = () => {
+    location.reload();
+}
 
 class Particle{
     constructor(x, y){
@@ -113,7 +116,7 @@ function animation(){
         particlesArray[i].update();
     }
     //ctx.drawImage(logo, 0,0, canvas.width, canvas.height);
-    connect();
+    //connect();
     requestAnimationFrame(animation);
 }
 
